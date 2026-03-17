@@ -8,7 +8,6 @@ We recommend [uv](https://docs.astral.sh/uv/) for managing your project:
 
 ```bash
 uv init my-project && cd my-project
-uv python pin 3.12
 uv add magic-automator --git https://github.com/Microwave-WYB/magic-automator
 ```
 
