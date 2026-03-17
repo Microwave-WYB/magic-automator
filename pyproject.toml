@@ -1,0 +1,35 @@
+[project]
+name = "magic-automator"
+version = "0.1.0"
+description = "UI automation with bypass-safe tap methods and an LLM-driven agent"
+readme = "README.md"
+authors = [
+    { name = "Yibo Wei", email = "david_wyb2001@outlook.com" }
+]
+requires-python = ">=3.10"
+dependencies = [
+    "uiautomator2",
+    "pyusb",
+    "openai",
+    "pydantic",
+]
+
+[dependency-groups]
+dev = [
+    "basedpyright",
+    "ruff",
+]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+
+[tool.basedpyright]
+pythonVersion = "3.10"
+typeCheckingMode = "standard"
+
+[build-system]
+requires = ["uv_build>=0.9.21,<0.10.0"]
+build-backend = "uv_build"
