@@ -1,6 +1,6 @@
 # magic-automator
 
-Android automation that works where others don't. Bypass-safe tap methods (USB HID, kernel sendevent) and an LLM-driven agent that reads the UI and figures things out.
+Android automation that works where others don't. Contains utilities to bypass apps that block click events sent from `adb`, using USB HID and kernel sendevent instead. Also includes an LLM-driven agent that reads the UI and figures things out.
 
 ## Install
 
