@@ -5,9 +5,17 @@ on:
   push:
     paths:
       - "src/**/*.py"
+      - "pyproject.toml"
+      - "uv.lock"
+      - "Makefile"
+      - ".github/workflows/ci.yml"
   pull_request:
     paths:
       - "src/**/*.py"
+      - "pyproject.toml"
+      - "uv.lock"
+      - "Makefile"
+      - ".github/workflows/ci.yml"
 
 jobs:
   check:

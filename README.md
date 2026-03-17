@@ -24,8 +24,6 @@ Three ways to tap, depending on your setup:
 ```python
 import uiautomator2 as u2
 from magic_automator import android
-from magic_automator.android import Hid
-
 device = u2.connect("your_serial")
 
 # Kernel sendevent - works on rooted devices and emulators
@@ -34,11 +32,8 @@ android.sendevent_tap(device, 540, 1994)
 # Tap a UI element by selector
 android.sendevent_tap_element(device(resourceId="com.app:id/button"))
 
-# USB HID - works on unrooted physical phones (requires USB connection)
-android.hid_tap(device, 540, 1994)
-
 # Persistent HID connection (avoids re-registering on every tap)
-with Hid(device) as hid:
+with android.Hid(device) as hid:
     hid.tap(540, 1994)
     hid.tap(200, 800)
 
@@ -46,6 +41,9 @@ with Hid(device) as hid:
     hid.down(540, 960)
     hid.move_to(540, 400)
     hid.up(540, 400)
+
+# One-shot HID (register, tap, unregister)
+android.hid_tap(device, 540, 1994)
 ```
 
 ## Human-like interaction
@@ -129,10 +127,10 @@ All function names in `plan_b` are aliases for the exact same function. There is
 
 | Function | Mechanism | Requires root | Requires USB |
 |---|---|---|---|
-| `android.hid_tap(device, x, y)` | AOA2 USB HID touchscreen | No | Yes |
 | `android.sendevent_tap(device, x, y)` | Kernel input events | Yes | No |
 | `android.sendevent_tap_element(selector)` | Kernel input events | Yes | No |
-| `Hid(device)` | AOA2 USB HID (persistent) | No | Yes |
+| `android.Hid(device)` | AOA2 USB HID (persistent) | No | Yes |
+| `android.hid_tap(device, x, y)` | AOA2 USB HID (one-shot register/tap/unregister) | No | Yes |
 
 ### Human-like interaction
 
