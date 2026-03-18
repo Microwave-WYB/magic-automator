@@ -4,7 +4,6 @@ from magic_automator.android.internal.sendevent import (
     Device,
     find_touch_device,
     sendevent_tap,
-    sendevent_tap_element,
 )
 
 __all__ = [
@@ -16,5 +15,4 @@ __all__ = [
     "natural_type",
     "random_point",
     "sendevent_tap",
-    "sendevent_tap_element",
 ]

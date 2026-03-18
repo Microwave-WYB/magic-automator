@@ -62,14 +62,3 @@ def sendevent_tap(device: u2.Device, x: int, y: int) -> None:
         f" && chmod +x /data/local/tmp/tap.sh"
         f" && /data/local/tmp/tap.sh"
     )
-
-
-def sendevent_tap_element(selector: u2.UiObject, timeout: int = 10) -> None:
-    """Tap a uiautomator2 element by its bounds using bypass-safe sendevent."""
-    selector.wait(timeout=float(timeout))
-    bounds = selector.info["bounds"]
-    sendevent_tap(
-        selector.session,
-        (bounds["left"] + bounds["right"]) // 2,
-        (bounds["top"] + bounds["bottom"]) // 2,
-    )

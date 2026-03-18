@@ -29,8 +29,9 @@ device = u2.connect("your_serial")
 # Kernel sendevent - works on rooted devices and emulators
 android.sendevent_tap(device, 540, 1994)
 
-# Tap a UI element by selector
-android.sendevent_tap_element(device(resourceId="com.app:id/button"))
+# Tap a UI element at a random point within its bounds
+x, y = android.random_point(device(resourceId="com.app:id/button"))
+android.sendevent_tap(device, x, y)
 
 # Persistent HID connection (avoids re-registering on every tap)
 with android.Hid(device) as hid:
@@ -128,7 +129,6 @@ All function names in `plan_b` are aliases for the exact same function. There is
 | Function | Mechanism | Requires root | Requires USB |
 |---|---|---|---|
 | `android.sendevent_tap(device, x, y)` | Kernel input events | Yes | No |
-| `android.sendevent_tap_element(selector)` | Kernel input events | Yes | No |
 | `android.Hid(device)` | AOA2 USB HID (persistent) | No | Yes |
 | `android.hid_tap(device, x, y)` | AOA2 USB HID (one-shot register/tap/unregister) | No | Yes |
 
